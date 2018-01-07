@@ -1,12 +1,19 @@
+# pipline:
+#   build:
+#     image: java:3.5-jdk-${JAVA_VERSION}-alpine
+#     environment:
+#       - GRADLE_USER_HOME=~/.gradle
+#     commands:
+#       - ./gradlew test
+  
+# matrix:  
+#   JAVA_VERSION:
+#     - 8
+#     - 7
 pipline:
   build:
-    image: java:3.5-jdk-${JAVA_VERSION}-alpine
+    image: java:openjdk-7
     environment:
       - GRADLE_USER_HOME=~/.gradle
     commands:
       - ./gradlew test
-  
-matrix:  
-  JAVA_VERSION:
-    - 8
-    - 7
