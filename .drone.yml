@@ -1,5 +1,6 @@
 build:
-  image: java:openjdk-7
+        #image: java:openjdk-7
+  image: 3.5-jdk-8-alpine
   environment:
     - GRADLE_USER_HOME=~/.gradle
   commands:
