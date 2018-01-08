@@ -20,10 +20,14 @@
 
 pipeline:
   build:
-    image: 3.3.9-jdk-7
+    image: java:3.5-jdk-${JAVA_VERSION}-alpine
     pull: true
     commands:
       - mvn clean
       - mvn install
       - mvn deploy
 
+matrix:  
+  JAVA_VERSION:
+    - 8
+    - 7
