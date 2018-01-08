@@ -10,11 +10,20 @@
 #   JAVA_VERSION:
 #     - 8
 #     - 7
-pipline:
- build:
-    image: java:openjdk-7
-    environment:
-      - GRADLE_USER_HOME=~/.gradle
+# pipline:
+#  build:
+#     image: java:openjdk-7
+#     environment:
+#       - GRADLE_USER_HOME=~/.gradle
+#     commands:
+#       - ./gradlew test
+
+pipeline:
+  build:
+    image: 3.3.9-jdk-7
+    pull: true
     commands:
-      - ./gradlew test
+      - mvn clean
+      - mvn install
+      - mvn deploy
 
