@@ -19,6 +19,14 @@
 #       - ./gradlew test
 
 pipeline:
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ~/.m2
+    # Mount the cache volume, needs "Trusted"
+    volumes:
+      - /tmp/cache:/cache
   build:
     #image: java:3.5-jdk-${JAVA_VERSION}-alpine
     # image: java:openjdk-7
@@ -29,9 +37,14 @@ pipeline:
       - mvn clean
       - mvn install
       # - mvn deploy
-  cache:
-      # - /home/$USER/bundler
-    - /home/$USER/.m2
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ~/.m2
+    # Mount the cache volume, needs "Trusted"
+    volumes:
+      - /tmp/cache:/cache
 matrix:  
   JAVA_VERSION:
     - 8
