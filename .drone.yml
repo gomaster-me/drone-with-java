@@ -28,7 +28,9 @@ pipeline:
       - mvn clean
       - mvn install
       # - mvn deploy
-
+    cache:
+      # - /home/$USER/bundler
+      - /home/$USER/.m2
 matrix:  
   JAVA_VERSION:
     - 8
