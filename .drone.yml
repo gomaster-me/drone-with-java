@@ -23,7 +23,7 @@ pipeline:
     image: drillster/drone-volume-cache
     restore: true
     mount:
-      - ./m2
+      - ~/.m2
     # Mount the cache volume, needs "Trusted"
     volumes:
       - /tmp/cache:/cache
@@ -41,11 +41,11 @@ pipeline:
     image: drillster/drone-volume-cache
     rebuild: true
     mount:
-      - ./m2
+      - ~/.m2
     # Mount the cache volume, needs "Trusted"
     volumes:
       - /tmp/cache:/cache
 matrix:  
   JAVA_VERSION:
     - 8
-    - 7
+    # - 7
