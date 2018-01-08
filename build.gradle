@@ -1,5 +1,6 @@
 apply plugin: 'java'
-
+apply plugin: 'maven'
+group='com.ningen.gomi.drone'
 sourceCompatibility = 1.5
 version = '1.0'
 
@@ -7,6 +8,14 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
+task convert2Maven {
+    doLast {
+        file("$buildDir/poms/pom-default.xml").renameTo(file("$rootDir/pom.xml"))
+    }
+}
+install.dependsOn(convert2Maven)
