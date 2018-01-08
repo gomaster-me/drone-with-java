@@ -22,15 +22,16 @@ pipeline:
   build:
     #image: java:3.5-jdk-${JAVA_VERSION}-alpine
     # image: java:openjdk-7
+    # image: maven:3.5.0-alpine
     image: maven:3-jdk-8
     pull: true
     commands:
       - mvn clean
       - mvn install
       # - mvn deploy
-    cache:
+  cache:
       # - /home/$USER/bundler
-      - /home/$USER/.m2
+    - /home/$USER/.m2
 matrix:  
   JAVA_VERSION:
     - 8
